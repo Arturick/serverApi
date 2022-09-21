@@ -227,7 +227,7 @@ class PostService {
           return articlesObject;
         case "Category":
           const categories = await Category.find();
-          const categoriesObject = [];
+          let categoriesObject = [];
 
           await Promise.all(
             categories.map(async (category) => {
