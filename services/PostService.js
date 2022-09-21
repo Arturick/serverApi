@@ -437,9 +437,7 @@ class PostService {
       console.log(parsedFilters);
       const category = await this.getPost(categoryTitle, "Category");
       let filteredProducts = [];
-      let filterObj = {
 
-      }
 
       category.categoryProducts.map((productObject) => {
 
@@ -448,15 +446,11 @@ class PostService {
           console.log(filter);
           let found = productObject.product.filters.includes(filter)
 
-          if(!filterObj[filter]){
-            filterObj[filter] = 0;
-          }
 
           if(filteredProducts.length > countProduct){
             return 0;
           }
           if(found) {
-            filterObj[filter] += 1;
             if (!(productObject in filteredProducts)){
               filteredProducts.push(productObject);
             }
@@ -474,7 +468,7 @@ class PostService {
         filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
 
       filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1)
-      console.log(filterObj);
+      
       return filteredProducts;
     } catch (err) {
       console.log("[PostService.js, filterProducts]: " + err);
