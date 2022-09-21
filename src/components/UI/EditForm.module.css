@@ -1,0 +1,28 @@
+.title{
+    text-align: center;
+    margin: 15px 0;
+}
+
+.title span{
+    color: rgb(43, 43, 201);
+    font-size: .7em;
+    cursor: pointer;
+}
+
+.editForm{
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.textarea{
+    width: 100%;
+    resize: none;
+    min-height: 200px;
+    padding: 10px;
+}
+
+.description{
+    background-color: aliceblue;
+    padding: 5px;
+    margin-bottom: 30px;
+}

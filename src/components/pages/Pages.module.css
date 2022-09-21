@@ -1,0 +1,46 @@
+.panelTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.panel{
+    padding: 20px;
+}
+
+.panelMain{
+    box-shadow: 1px 1px 15px -9px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.createCategoryBtn{
+    background-color: var(--ui-gray);
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(211, 209, 209);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.delete{
+    margin-right: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.sectionTitle{
+    text-align: center;
+    margin-bottom: 10px;
+}

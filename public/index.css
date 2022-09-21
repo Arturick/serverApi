@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+
+:root{
+    --ui-gray: #1F2937;
+}
+
+.admin-panel{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.add-post-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-post-form input{
+    margin: 3px 0;
+}
+
+.auth-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20vh;
+}
+
+.auth-form input[type=submit]{
+    padding: 5px 0;
+}
+
+.input-wrapper{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input-wrapper img{
+    width: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+}

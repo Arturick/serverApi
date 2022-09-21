@@ -1,0 +1,45 @@
+.table {
+  width: 50%;
+  margin: 15px 0;
+}
+
+.tableItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+  padding: 5px;
+}
+
+.tableItem:nth-child(even) {
+  background-color: #fff;
+}
+
+.key {
+  padding-right: 100px;
+}
+
+.value {
+  padding: 0 20px;
+}
+
+.delete {
+  background-color: rgb(194, 84, 84);
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.addForm {
+  margin-bottom: 20px;
+}
+
+.addForm input[type="text"] {
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.addForm input[type="submit"] {
+  font-size: 16px;
+  padding: 5px;
+}

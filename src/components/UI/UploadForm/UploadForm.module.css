@@ -1,0 +1,11 @@
+.addingForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.addingForm label{
+    margin-bottom: 5px;
+}
+.addingForm input{
+    margin-bottom: 10px;
+}
