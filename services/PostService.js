@@ -440,9 +440,12 @@ class PostService {
 
       if(parsedFilters[0].length < 2){
         filteredProducts = await Product.find();
-        filteredProducts = filteredProducts.slice(0, countProduct);
+
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
+        if(filteredProducts.length >= countProduct){
+          filteredProducts = filteredProducts.slice(0, countProduct);
+        }
       } else {
         category.categoryProducts.map((productObject) => {
 
