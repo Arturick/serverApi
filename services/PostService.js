@@ -434,41 +434,45 @@ class PostService {
       priceTo   = parseInt(priceTo);
 
       const parsedFilters = filters.split(',');
-      console.log(parsedFilters);
+      console.log(parsedFilters[0].length);
       const category = await this.getPost(categoryTitle, "Category");
       let filteredProducts = [];
 
+      if(parsedFilters[0].length < 2){
+        filteredProducts = await Product.find();
+      } else {
+        category.categoryProducts.map((productObject) => {
 
-      category.categoryProducts.map((productObject) => {
+
+          parsedFilters.map(filter => {
+            console.log(filter);
+            let found = productObject.product.filters.includes(filter)
 
 
-        parsedFilters.map(filter => {
-          console.log(filter);
-          let found = productObject.product.filters.includes(filter)
+            if(filteredProducts.length > countProduct){
+              return 0;
+            }
+            if(found) {
+              if (!(productObject in filteredProducts)){
+                filteredProducts.push(productObject);
+              }
 
+            }
+
+          });
 
           if(filteredProducts.length > countProduct){
             return 0;
           }
-          if(found) {
-            if (!(productObject in filteredProducts)){
-              filteredProducts.push(productObject);
-            }
-
-          }
-
         });
+      }
 
-          if(filteredProducts.length > countProduct){
-             return 0;
-          }
-        });
-
+      console.log(filteredProducts)
       if(priceFrom || priceTo)
-        filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
+        filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
 
       filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1)
-      
+
       return filteredProducts;
     } catch (err) {
       console.log("[PostService.js, filterProducts]: " + err);
