@@ -440,6 +440,8 @@ class PostService {
 
       if(parsedFilters[0].length < 2){
         filteredProducts = await Product.find();
+        if(priceFrom || priceTo)
+          filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
       } else {
         category.categoryProducts.map((productObject) => {
 
@@ -465,11 +467,12 @@ class PostService {
             return 0;
           }
         });
+        if(priceFrom || priceTo)
+          filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
       }
 
       console.log(filteredProducts)
-      if(priceFrom || priceTo)
-        filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
+
 
       filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1)
 
