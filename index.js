@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
-        origin: ['http://keypumps.ru','http://keypumps.ru:3000/','http://localhost:3000','http://localhost:4000','http://localhost:80', 'https://keypumps-client.vercel.app']
+        origin: "*"
 }));
 app.use('/', router);
 
