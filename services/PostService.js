@@ -527,7 +527,7 @@ class PostService {
       for(let i of productList){
         let imgSrc = await this.getPostImages(i.title, "Product");
         let obj = i;
-        obj["_doc"].photosLinks = imgSrc.photosLinks;
+        obj["_doc"].productImages = imgSrc;
         doneList.push(obj)
       }
       return doneList
