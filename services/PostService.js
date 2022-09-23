@@ -353,7 +353,7 @@ class PostService {
           await Object.assign(category, post).save();
           break;
         case "Product":
-          const product = await Product.findById(post.id);
+          const product = await Product.findOne({title: post});
           await Object.assign(product, post).save();
           break;
         case "Article":
