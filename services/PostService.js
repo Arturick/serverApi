@@ -491,7 +491,7 @@ class PostService {
       } else if(sort == 2){
         filteredProducts = filteredProducts.sort((a, b) => a.price > b.price ? -1 : 1);
       } else if (offset == 3){
-        filteredProducts = filteredProducts.sort((a, b) => a.price < b..price ? -1 : 1);
+        filteredProducts = filteredProducts.sort((a, b) => a.price < b.price ? -1 : 1);
       }
 
 

@@ -87,9 +87,9 @@ class PostController {
   }
 
   async filterProducts(req, res){
-    const {categoryTitle, filters, priceFrom, priceTo, countProduct} = req.query;
+    const {categoryTitle, filters, priceFrom, priceTo, countProduct, offset, sort} = req.query;
 
-    const filtered = await postService.filterProducts(categoryTitle, filters, priceFrom, priceTo, countProduct);
+    const filtered = await postService.filterProducts(categoryTitle, filters, priceFrom, priceTo, countProduct , offset, sort);
     return res.json(filtered);
   }
   async getCategoryFilter(req, res){
