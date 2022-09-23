@@ -354,7 +354,7 @@ class PostService {
           break;
         case "Product":
           const product = await Product.findById(post.id);
-          console.log(product)
+          console.log(post)
           await Object.assign(product, post).save();
           break;
         case "Article":
