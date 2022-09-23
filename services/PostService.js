@@ -428,7 +428,7 @@ class PostService {
     return findedProducts;
   }
 
-  async filterProducts(categoryTitle, filters, priceFrom, priceTo, countProduct){
+  async filterProducts(categoryTitle, filters, priceFrom, priceTo, countProduct,offset, sort){
     try{
       priceFrom = parseInt(priceFrom);
       priceTo   = parseInt(priceTo);
@@ -443,6 +443,9 @@ class PostService {
 
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
+        if(+offset > 0){
+          filteredProducts = filteredProducts.slice(+offset, filteredProducts.length - 1);
+        }
         if(filteredProducts.length >= countProduct){
           filteredProducts = filteredProducts.slice(0, countProduct);
         }
@@ -473,12 +476,24 @@ class PostService {
         });
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
+        if(+offset > 0){
+          filteredProducts = filteredProducts.slice(+offset, filteredProducts.length - 1);
+        }
+        if(filteredProducts.length >= countProduct){
+          filteredProducts = filteredProducts.slice(0, countProduct);
+        }
       }
 
       console.log(filteredProducts)
 
+      if(sort == 1){
+        filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1);
+      } else if(sort == 2){
+        filteredProducts = filteredProducts.sort((a, b) => a.price > b.price ? -1 : 1);
+      } else if (offset == 3){
+        filteredProducts = filteredProducts.sort((a, b) => a.price < b..price ? -1 : 1);
+      }
 
-      filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1)
 
       return filteredProducts;
     } catch (err) {
