@@ -454,7 +454,7 @@ class PostService {
         category.categoryProducts.map((productObject) => {
 
 
-          parsedFilters.map(filter => {
+          parsedFilters.map(async filter => {
             console.log(filter);
             let found = productObject.product.filters.includes(filter)
 
@@ -493,6 +493,10 @@ class PostService {
         filteredProducts = filteredProducts.sort((a, b) => a.price > b.price ? -1 : 1);
       } else if (offset == 3){
         filteredProducts = filteredProducts.sort((a, b) => a.price < b.price ? -1 : 1);
+      }
+      for(let i of filteredProducts){
+        let imgSrc = await this.getPostImages(i.title, "Product");
+        i["_doc"].productImages = imgSrc;
       }
 
 
