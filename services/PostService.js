@@ -491,7 +491,7 @@ class PostService {
         filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1);
       } else if(sort == 2){
         filteredProducts = filteredProducts.sort((a, b) => a.price > b.price ? -1 : 1);
-      } else if (offset == 3){
+      } else if (sort == 3){
         filteredProducts = filteredProducts.sort((a, b) => a.price < b.price ? -1 : 1);
       }
       for(let i of filteredProducts){
