@@ -487,6 +487,10 @@ class PostService {
         if(filteredProducts.length >= countProduct){
           filteredProducts = filteredProducts.slice(0, countProduct);
         }
+        for(let i of filteredProducts){
+          let imgSrc = await this.getPostImages(i.title, "Product");
+          i["_doc"].productImages = imgSrc;
+        }
       }
 
       //console.log(filteredProducts)
@@ -498,10 +502,7 @@ class PostService {
       } else if (sort == 3){
         filteredProducts = filteredProducts.sort((a, b) => a.price < b.price ? -1 : 1);
       }
-      for(let i of filteredProducts){
-        let imgSrc = await this.getPostImages(i.title, "Product");
-        i["_doc"].productImages = imgSrc;
-      }
+
 
 
       return filteredProducts;
