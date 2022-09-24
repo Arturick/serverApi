@@ -446,7 +446,7 @@ class PostService {
         });
 
         if(priceFrom || priceTo)
-          filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
+          filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
         if(+offset > 0){
           filteredProducts = filteredProducts.slice(+offset, filteredProducts.length - 1);
         }
@@ -491,18 +491,20 @@ class PostService {
           let imgSrc = await this.getPostImages(i.title, "Product");
           i["_doc"].productImages = imgSrc;
         }
+
+
       }
 
       //console.log(filteredProducts)
 
-      if(sort == 1){
-        filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1);
-      } else if(sort == 2){
-        filteredProducts = filteredProducts.sort((a, b) => a.price > b.price ? -1 : 1);
-      } else if (sort == 3){
-        filteredProducts = filteredProducts.sort((a, b) => a.price < b.price ? -1 : 1);
-      }
 
+      if(sort == 1){
+        filteredProducts = filteredProducts.sort((a, b) => a.product.order > b.product.order ? -1 : 1);
+      } else if(sort == 2){
+        filteredProducts = filteredProducts.sort((a, b) => a.product.price > b.product.price ? -1 : 1);
+      } else if (sort == 3){
+        filteredProducts = filteredProducts.sort((a, b) => a.product.price < b.product.price ? -1 : 1);
+      }
 
 
       return filteredProducts;
