@@ -440,7 +440,7 @@ class PostService {
       let filteredProducts = [];
 
       if(parsedFilters[0].length < 2){
-        filteredProducts = category.categoryProducts;
+        category.categoryProducts.map((productObject) => {filteredProducts.push(productObject)});
 
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
