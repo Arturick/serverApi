@@ -440,7 +440,7 @@ class PostService {
       let filteredProducts = [];
 
       if(parsedFilters[0].length < 2){
-        filteredProducts = await Product.find();
+        filteredProducts = category.categoryProducts;
 
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.price > priceFrom) && (productObject.price < priceTo));
@@ -464,6 +464,7 @@ class PostService {
             }
             if(found) {
               if (!(productObject in filteredProducts)){
+
                 filteredProducts.push(productObject);
               }
 
