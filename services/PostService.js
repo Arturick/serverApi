@@ -455,10 +455,10 @@ class PostService {
         }
       } else {
         category.categoryProducts.map((productObject) => {
-
+          console.log(productObject)
 
           parsedFilters.map(async filter => {
-            console.log(filter);
+
             let found = productObject.product.filters.includes(filter)
 
 
