@@ -489,7 +489,7 @@ class PostService {
         }
       }
 
-      console.log(filteredProducts)
+      //console.log(filteredProducts)
 
       if(sort == 1){
         filteredProducts = filteredProducts.sort((a, b) => a.order > b.order ? -1 : 1);
