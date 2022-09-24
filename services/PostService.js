@@ -455,13 +455,13 @@ class PostService {
         }
       } else {
         category.categoryProducts.map((productObject) => {
-          console.log(productObject)
+
 
           parsedFilters.map(async filter => {
 
             let found = productObject.product.filters.includes(filter)
 
-
+            console.log(productObject)
             if(filteredProducts.length > countProduct){
               return 0;
             }
@@ -487,12 +487,6 @@ class PostService {
         if(filteredProducts.length >= countProduct){
           filteredProducts = filteredProducts.slice(0, countProduct);
         }
-        for(let i of filteredProducts){
-          let imgSrc = await this.getPostImages(i.title, "Product");
-          i["_doc"].productImages = imgSrc;
-        }
-
-
       }
 
       //console.log(filteredProducts)
