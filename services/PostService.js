@@ -435,13 +435,23 @@ class PostService {
       priceTo   = parseInt(priceTo);
 
       const parsedFilters = filters.split(',');
-      console.log(parsedFilters[0].length);
       const category = await this.getPost(categoryTitle, "Category");
       let filteredProducts = [];
+      let catList = await Category.find({"title": categoryTitle});
+      let metaFiltersList = []
+      catList = catList[0].filters;
+      catList.map(i => {
+        parsedFilters.map(filter => {
 
+          if(i.subfilters.indexOf(filter) > -1){
+            metaFiltersList.push(i.subfilters)
+          }
+        })
+      })
+      console.log(metaFiltersList)
       if(parsedFilters[0].length < 2){
         category.categoryProducts.map((productObject) => {
-          console.log(productObject)
+
           filteredProducts.push(productObject)
         });
 
@@ -470,11 +480,24 @@ class PostService {
 
             let found = productObject.product.filters.includes(filter)
 
-            console.log(productObject)
             if(found) {
               if (!(productObject in filteredProducts)){
+                let flag = false;
+                let flag2 = false;
+                productObject.product.filters.map(i => {
+                  metaFiltersList.map(j => {
+                      if(j.indexOf(i) > -1 && parsedFilters.indexOf(i)>-1){
+                        flag = true;
+                      }
+                  })
+                  if(!flag){
+                    flag2 = true;
+                  }
+                })
+                if(!flag2){
+                  filteredProducts.push(productObject);
+                }
 
-                filteredProducts.push(productObject);
               }
 
             }
@@ -500,9 +523,6 @@ class PostService {
           filteredProducts = filteredProducts.slice(0, countProduct);
         }
       }
-
-      //console.log(filteredProducts)
-
 
 
 
