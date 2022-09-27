@@ -481,24 +481,36 @@ class PostService {
             let found = productObject.product.filters.includes(filter)
 
             if(found) {
-              if (!(productObject in filteredProducts)){
-                let flag = false;
-                let flag2 = false;
+
+                let flag = true;
+                let flag2 = true;
                 productObject.product.filters.map(i => {
+                  flag = false;
+
                   metaFiltersList.map(j => {
-                      if(j.indexOf(i) > -1 && parsedFilters.indexOf(i)>-1){
+
+
+                      if(j.indexOf(i) >-1){
                         flag = true;
+
                       }
+
                   })
-                  if(!flag){
-                    flag2 = true;
+                  if(flag && parsedFilters.indexOf(i) < 0){
+                      flag2 = false
                   }
+
                 })
-                if(!flag2){
+              console.log(flag2);
+                if(flag2){
                   filteredProducts.push(productObject);
                 }
 
-              }
+
+
+
+
+
 
             }
 
