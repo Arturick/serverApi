@@ -445,6 +445,15 @@ class PostService {
           filteredProducts.push(productObject)
         });
 
+
+        if(sort == 1){
+          filteredProducts = filteredProducts.sort((a, b) => a.product.order > b.product.order ? -1 : 1);
+        } else if(sort == 2){
+          filteredProducts = filteredProducts.sort((a, b) => a.product.price > b.product.price ? -1 : 1);
+        } else if (sort == 3){
+          filteredProducts = filteredProducts.sort((a, b) => a.product.price < b.product.price ? -1 : 1);
+        }
+
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
         if(+offset > 0){
@@ -474,6 +483,14 @@ class PostService {
 
 
         });
+        if(sort == 1){
+          filteredProducts = filteredProducts.sort((a, b) => a.product.order > b.product.order ? -1 : 1);
+        } else if(sort == 2){
+          filteredProducts = filteredProducts.sort((a, b) => a.product.price > b.product.price ? -1 : 1);
+        } else if (sort == 3){
+          filteredProducts = filteredProducts.sort((a, b) => a.product.price < b.product.price ? -1 : 1);
+        }
+
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
         if(+offset > 0){
@@ -487,13 +504,7 @@ class PostService {
       //console.log(filteredProducts)
 
 
-      if(sort == 1){
-        filteredProducts = filteredProducts.sort((a, b) => a.product.order > b.product.order ? -1 : 1);
-      } else if(sort == 2){
-        filteredProducts = filteredProducts.sort((a, b) => a.product.price > b.product.price ? -1 : 1);
-      } else if (sort == 3){
-        filteredProducts = filteredProducts.sort((a, b) => a.product.price < b.product.price ? -1 : 1);
-      }
+
 
 
       return filteredProducts;
