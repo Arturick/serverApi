@@ -462,9 +462,6 @@ class PostService {
             let found = productObject.product.filters.includes(filter)
 
             console.log(productObject)
-            if(filteredProducts.length > countProduct){
-              return 0;
-            }
             if(found) {
               if (!(productObject in filteredProducts)){
 
@@ -475,9 +472,7 @@ class PostService {
 
           });
 
-          if(filteredProducts.length > countProduct){
-            return 0;
-          }
+
         });
         if(priceFrom || priceTo)
           filteredProducts = filteredProducts.filter(productObject => (productObject.product.price > priceFrom) && (productObject.product.price < priceTo));
